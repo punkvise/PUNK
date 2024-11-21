@@ -1,1 +1,112 @@
-Hello world
+#include <stdio.h>
+#include <string.h>
+
+struct Adresse {
+    char rue[80];       
+    char ville[70];        
+    int codepostal;           
+};
+
+struct Personne {
+    char nom[80];    
+    int age;
+    struct Adresse adresse; // Nested structure
+};
+
+void creerpersonne(struct Personne personne) {
+   printf("Entrez le nom de la personne : ");
+   scanf("%s", personne.nom);
+    
+    printf("Entrez l'âge de %s : ", personne.nom);
+    scanf("%d", &(personne.age));
+
+    printf("Entrez l'adresse de %s :\n" , personne.nom);
+    printf("Rue :");
+    printf("[^\n]", personne.adresse.rue );//nedded %
+    printf("Ville:");
+    printf("%s", personne.adresse.ville);
+    printf("Code Postal :");
+    printf("%d", &(personne.adresse.codepostal));
+
+}
+
+void afficherPersonne(struct Personne personne) {
+    printf("\n--- Informations de %s ---\n", personne.nom);
+    printf("Nom : %s\n", personne.nom);
+    printf("Âge : %d\n", personne.age);
+    printf("Adresse : %s, %s, %d\n", personne.adresse.rue, personne.adresse.ville, personne.adresse.codepostal);
+
+}
+
+void modifierPersonne(struct Personne personne) {
+    
+    int choix;
+    printf("\n Que voulez-vous modifier pour %s ?\n",personne.nom);
+    printf("1. Nom :\n");
+    printf("2. Age : \n");
+    printf("3. Adresse \n");
+    printf("Entrez Votrz Choix [1-3] :");
+    printf("%d", &choix);
+
+    switch(choix) {
+    case 1:
+    printf ("Entrez La nouveau nom : ");
+    scanf ("%s", personne.nom);
+       break;
+
+    case 2:
+    printf ("Entrez la nouveau age :");
+    scanf ("%d", personne.age);
+       break;
+
+    case 3:
+    printf ("Entrez la nouvelle adresse :");
+    printf ("Rue :");
+    scanf ("[^\n]", personne.adresse.rue); //nedded %
+    printf("Ville :");
+    scanf ("%s", personne.adresse.ville);
+    printf ("Code Postal :");
+    scanf ("%d", personne.adresse.codepostal);
+         break;
+      default:
+      printf ("Choix invalide ! \n");
+    }
+}
+
+void supprimerPersonne (struct Personne *personne) {
+
+memset(personne, 2, sizeof(struct Personne));
+printf("\nLa personne a été suprimmé avec succès.");
+
+}
+
+int main() {
+    struct Personne personne[MAX_PERSONNES];
+    int nombresPersonnes = 2;
+    int choix;
+
+    do {
+      printf("\n----Main Menu----\n");
+      printf("1. Crééz une nouvelle personne");
+      printf("2. Aficher les informations");
+      printf("3. Modifier une personne");
+      printf("4. Suprimmer une personne");
+      printf("5. Quitter");
+      printf("Entrez Votre choix");
+      printf("%d", &choix);
+
+      switch (choix) {
+
+      case 1 : 
+
+
+
+
+
+
+
+      }
+    }
+
+    return 0;
+}
